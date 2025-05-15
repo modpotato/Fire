@@ -1251,6 +1251,69 @@ void FireAudioProcessor::processDistortion (juce::AudioBuffer<float>& bandBuffer
         case 11:
             waveShaper.functionToUse = waveshaping::tanclip;
             break;
+        // Wet Saturation Types
+        case 12:
+            waveShaper.functionToUse = waveshaping::waterSaturation;
+            break;
+        case 13:
+            waveShaper.functionToUse = waveshaping::pissSaturation;
+            break;
+        case 14:
+            waveShaper.functionToUse = waveshaping::mudSaturation;
+            break;
+        case 15:
+            waveShaper.functionToUse = waveshaping::iceSaturation;
+            break;
+        case 16:
+            waveShaper.functionToUse = waveshaping::acidSaturation;
+            break;
+        case 17:
+            waveShaper.functionToUse = waveshaping::steamSaturation;
+            break;
+        // Tape Emulation Types
+        case 18:
+            waveShaper.functionToUse = waveshaping::coldTape;
+            break;
+        case 19:
+            waveShaper.functionToUse = waveshaping::cleanTape;
+            break;
+        case 20:
+            waveShaper.functionToUse = waveshaping::warmTape;
+            break;
+        case 21:
+            waveShaper.functionToUse = waveshaping::hotTape;
+            break;
+        case 22:
+            waveShaper.functionToUse = waveshaping::cassetteTape;
+            break;
+        case 23:
+            waveShaper.functionToUse = waveshaping::vintageTape;
+            break;
+        case 24:
+            waveShaper.functionToUse = waveshaping::lofiTape;
+            break;
+        case 25:
+            waveShaper.functionToUse = waveshaping::studioTape;
+            break;
+        case 26:
+            waveShaper.functionToUse = waveshaping::magneticSaturation;
+            break;
+        // Creative Distortion Types
+        case 27:
+            waveShaper.functionToUse = waveshaping::quantizationDistortion;
+            break;
+        case 28:
+            waveShaper.functionToUse = waveshaping::resonantDistortion;
+            break;
+        case 29:
+            waveShaper.functionToUse = waveshaping::dynamicDistortion;
+            break;
+        case 30:
+            waveShaper.functionToUse = waveshaping::asymWaveFolder;
+            break;
+        case 31:
+            waveShaper.functionToUse = waveshaping::pulseDistortion;
+            break;
     }
 
     auto& waveShaper2 = overdrive.get<3>();
@@ -1595,10 +1658,10 @@ juce::AudioProcessorValueTreeState::ParameterLayout FireAudioProcessor::createPa
     using PFloat = juce::AudioParameterFloat;
     parameters.push_back (std::make_unique<PBool> (juce::ParameterID { HQ_ID, versionNum }, HQ_NAME, false));
 
-    parameters.push_back (std::make_unique<PInt> (juce::ParameterID { MODE_ID1, versionNum }, MODE_NAME1, 0, 11, 3));
-    parameters.push_back (std::make_unique<PInt> (juce::ParameterID { MODE_ID2, versionNum }, MODE_NAME2, 0, 11, 3));
-    parameters.push_back (std::make_unique<PInt> (juce::ParameterID { MODE_ID3, versionNum }, MODE_NAME3, 0, 11, 3));
-    parameters.push_back (std::make_unique<PInt> (juce::ParameterID { MODE_ID4, versionNum }, MODE_NAME4, 0, 11, 3));
+    parameters.push_back (std::make_unique<PInt> (juce::ParameterID { MODE_ID1, versionNum }, MODE_NAME1, 0, 31, 3));
+    parameters.push_back (std::make_unique<PInt> (juce::ParameterID { MODE_ID2, versionNum }, MODE_NAME2, 0, 31, 3));
+    parameters.push_back (std::make_unique<PInt> (juce::ParameterID { MODE_ID3, versionNum }, MODE_NAME3, 0, 31, 3));
+    parameters.push_back (std::make_unique<PInt> (juce::ParameterID { MODE_ID4, versionNum }, MODE_NAME4, 0, 31, 3));
 
     parameters.push_back (std::make_unique<PBool> (juce::ParameterID { LINKED_ID1, versionNum }, LINKED_NAME1, true));
     parameters.push_back (std::make_unique<PBool> (juce::ParameterID { LINKED_ID2, versionNum }, LINKED_NAME2, true));

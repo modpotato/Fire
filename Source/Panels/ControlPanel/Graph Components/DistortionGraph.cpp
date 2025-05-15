@@ -41,7 +41,7 @@ void DistortionGraph::paint (juce::Graphics& g)
     g.drawRect (getLocalBounds(), 1);
 
     // symmetrical distortion
-    if (mode <= 15)
+    if (mode <= 31)
     {
         float functionValue = 0.0f;
         float mixValue;
@@ -115,6 +115,69 @@ void DistortionGraph::paint (juce::Graphics& g)
                     break;
                 case 11:
                     functionValue = waveshaping::tanclip (valueAfterDrive);
+                    break;
+                // Wet Saturation Types
+                case 12:
+                    functionValue = waveshaping::waterSaturation (valueAfterDrive);
+                    break;
+                case 13:
+                    functionValue = waveshaping::pissSaturation (valueAfterDrive);
+                    break;
+                case 14:
+                    functionValue = waveshaping::mudSaturation (valueAfterDrive);
+                    break;
+                case 15:
+                    functionValue = waveshaping::iceSaturation (valueAfterDrive);
+                    break;
+                case 16:
+                    functionValue = waveshaping::acidSaturation (valueAfterDrive);
+                    break;
+                case 17:
+                    functionValue = waveshaping::steamSaturation (valueAfterDrive);
+                    break;
+                // Tape Emulation Types
+                case 18:
+                    functionValue = waveshaping::coldTape (valueAfterDrive);
+                    break;
+                case 19:
+                    functionValue = waveshaping::cleanTape (valueAfterDrive);
+                    break;
+                case 20:
+                    functionValue = waveshaping::warmTape (valueAfterDrive);
+                    break;
+                case 21:
+                    functionValue = waveshaping::hotTape (valueAfterDrive);
+                    break;
+                case 22:
+                    functionValue = waveshaping::cassetteTape (valueAfterDrive);
+                    break;
+                case 23:
+                    functionValue = waveshaping::vintageTape (valueAfterDrive);
+                    break;
+                case 24:
+                    functionValue = waveshaping::lofiTape (valueAfterDrive);
+                    break;
+                case 25:
+                    functionValue = waveshaping::studioTape (valueAfterDrive);
+                    break;
+                case 26:
+                    functionValue = waveshaping::magneticSaturation (valueAfterDrive);
+                    break;
+                // Creative Distortion Types
+                case 27:
+                    functionValue = waveshaping::quantizationDistortion (valueAfterDrive);
+                    break;
+                case 28:
+                    functionValue = waveshaping::resonantDistortion (valueAfterDrive);
+                    break;
+                case 29:
+                    functionValue = waveshaping::dynamicDistortion (valueAfterDrive);
+                    break;
+                case 30:
+                    functionValue = waveshaping::asymWaveFolder (valueAfterDrive);
+                    break;
+                case 31:
+                    functionValue = waveshaping::pulseDistortion (valueAfterDrive);
                     break;
             }
 
